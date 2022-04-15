@@ -1,11 +1,13 @@
 import React from 'react';
+import { useChromeStorageSync } from 'use-chrome-storage';
 
 const App = () => {
+  const [value, error] = useChromeStorageSync('ytMusicCookie');
+
   return (
-    <div className="flex justify-center">
-      <h1 className="font-bold text-2xl text-blue-900">
-        React and Tailwind with Vitejs!
-      </h1>
+    <div style={{ minWidth: '200px' }}>
+      <div>Value: {value}</div>
+      <div>Error: {error}</div>
     </div>
   );
 };

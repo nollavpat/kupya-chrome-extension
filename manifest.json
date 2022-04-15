@@ -4,5 +4,10 @@
   "version": "0.0.1",
   "action": { "default_popup": "index.html" },
   "description": "Copy spotify playlists to yt music",
-  "author": "Jairus Patrick Vallon"
+  "author": "Jairus Patrick Vallon",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage", "tabs", "webNavigation", "webRequest"],
+  "host_permissions": ["https://music.youtube.com/*"]
 }
