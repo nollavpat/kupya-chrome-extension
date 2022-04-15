@@ -1,8 +1,16 @@
 import React from 'react';
 import { useChromeStorageSync } from 'use-chrome-storage';
-import { Center, Container, Flex, Link, Switch, Text } from '@chakra-ui/react';
+import {
+  Button,
+  Center,
+  Container,
+  Flex,
+  Link,
+  Switch,
+  Text,
+} from '@chakra-ui/react';
 
-import './App.css';
+import YTMusic from './YTMusic';
 
 const App = () => {
   // const [ytMusicCookie] = useChromeStorageSync('ytMusicCookie');
@@ -41,6 +49,15 @@ const App = () => {
           YT Music
         </Link>
       )}
+      <Button
+        onClick={async () => {
+          const response = await YTMusic.getXGoogVisitorId();
+
+          console.log(response);
+        }}
+      >
+        Test
+      </Button>
     </Container>
   );
 };
