@@ -4,16 +4,15 @@ import {
   Button,
   Center,
   Container,
+  Divider,
   Flex,
   Link,
   Switch,
   Text,
 } from '@chakra-ui/react';
 
-import YTMusic from './YTMusic';
-
 const App = () => {
-  // const [ytMusicCookie] = useChromeStorageSync('ytMusicCookie');
+  const [ytMusicCookie] = useChromeStorageSync('ytMusicCookie');
   const [updateCookie, setUpdateCookie] = useChromeStorageSync(
     'updateYtMusicCookie',
     false
@@ -24,7 +23,7 @@ const App = () => {
   };
 
   return (
-    <Container minW="sm" padding="4" border="1px" minH="sm">
+    <Container minW="200px" padding="4" border="1px" minH="min-content">
       <Text fontSize="lg">Kupya</Text>
       <Flex>
         <Center marginRight="2">
@@ -49,14 +48,13 @@ const App = () => {
           YT Music
         </Link>
       )}
+      <Divider marginY="2" />
       <Button
-        onClick={async () => {
-          const response = await YTMusic.getXGoogVisitorId();
-
-          console.log(response);
+        onClick={() => {
+          navigator.clipboard.writeText(ytMusicCookie);
         }}
       >
-        Test
+        Copy to clipboard
       </Button>
     </Container>
   );
